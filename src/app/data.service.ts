@@ -11,10 +11,11 @@ export class DataService {
   constructor(private _http: Http) {}
   getUsers() {
     return this._http.get('/api/users')
-      .pipe(map((res: any) => {
-        console.log('res', res);
-        return res;
-      }))
+      .pipe(map(result => this.result = result.json().data))
+      // .pipe(map((res: any) => {
+      //   console.log('res', res);
+      //   return res;
+      // }))
       // .map(result => this.result = result.json().data);
   }
 }
