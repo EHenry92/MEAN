@@ -5,13 +5,16 @@
   </h1>
 </div>
 <h1> The list of Users from MongoDb:</h1>
-  <ul *ngFor="let user of users;">
+  <ul *ngFor="let user of users; let i = index">
     <li>
       <span (click)="subUser(user._id)">🗑 </span>
-      <span>{{user.name}}</span>
+      <!-- <span>{{user.name}}</span> -->
+      <span>
+        <input [(ngModel)]="user.name" [value]=user.name (change)="editUser(user._id, user.name)">
+      </span>
     </li>
   </ul>
 <div>
   <input [(ngModel)]="newUser" [value]=newUser >
-  <input type="submit" (click)= "addUser()">
+  <input type="submit" (click)= "addUser()" value="Create User">
 </div>

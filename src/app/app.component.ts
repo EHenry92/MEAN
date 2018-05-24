@@ -43,24 +43,19 @@ export class AppComponent {
   }
 
   editUser(userId, newName): void {
-
+    this._dataService.putUser(userId, {name: newName})
+    .subscribe(
+      data => {
+        console.log(data);
+      },
+      err => {
+        console.log("An error occured updating user", err);
+      }
+    )
   };
 }
 
 
 
 
-    // this._dataService.putUser("5b06d5196fb05f0420bb5266", {name: "Bobby Joel AppleSeed"})
-    // .subscribe(
-    //   data => {
-    //     // console.log(data);
-    //   },
-    //   err => {
-    //     console.log("An error occured updating user", err);
-    //   }
-    // )
-    // this._dataService.destroyUser("5b06d74e57b2fd0468c0479e")
-    // .subscribe(
-    //   data => { console.log(data); },
-    //   err => { console.log("An error occured deleting user", err); }
-    // )
+
