@@ -27,6 +27,7 @@ export class AppComponent {
       data => { console.log(data); },
       err => { console.log("An error occured positing user", err); }
     )
+    this.newUser = '';
     this._dataService.getUsers()
       .subscribe(res => this.users = res);
 
@@ -39,8 +40,11 @@ export class AppComponent {
     )
     this._dataService.getUsers()
       .subscribe(res => this.users = res);
-
   }
+
+  editUser(userId, newName): void {
+
+  };
 }
 
 
