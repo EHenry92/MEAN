@@ -5,6 +5,9 @@ const ObjectId = require('mongodb').ObjectID;
 
 const dbName = 'mean';
 
+// const port = process.env.PORT || '3003';
+
+
 //Connect
 const connection = closure => {
   return MongoClient.connect(`mongodb://localhost:27017/${dbName}`, (err, database) => {
