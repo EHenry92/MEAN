@@ -12,10 +12,14 @@ export class DataService {
   getUsers() {
     return this._http.get('/api/users')
       .pipe(map(result => this.result = result.json().data))
-      // .pipe(map((res: any) => {
-      //   console.log('res', res);
-      //   return res;
-      // }))
-      // .map(result => this.result = result.json().data);
+  }
+  postUser(data) {
+    return this._http.post('/api/users', data)
+  }
+  putUser(uId, data) {
+    return this._http.put(`/api/users/${uId}`, data)
+  }
+  destroyUser(uId) {
+    return this._http.delete((`/api/users/${uId}`))
   }
 }

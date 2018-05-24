@@ -44,4 +44,43 @@ router.get('/users', (req, res) => {
   });
 });
 
+router.post('/users', (req, res) => {
+  connection(db => {
+    db.collection('users')
+    .insert(req.body)
+    .then(newUser => {
+      res.status(200).send('ok').end();
+    })
+    .catch(err => {
+      sendError(err, res);
+    });
+  });
+});
+
+router.put('/users/:id', (req, res) => {
+  connection(db => {
+    db.collection('users')
+    .update({_id: ObjectId(req.params.id)}, {$set: req.body})
+    .then(ret => {
+      res.status(200).send('ok').end();
+    })
+    .catch(err => {
+      sendError(err, res);
+    });
+  });
+});
+
+router.delete('/users/:id', (req, res) => {
+  connection(db => {
+    db.collection('users')
+    .remove({_id: ObjectId(req.params.id)}, {justOne: true})
+    .then(ret => {
+      res.status(200).send('ok').end();
+    })
+    .catch(err => {
+      sendError(err, res);
+    });
+  });
+});
+
 module.exports = router;
