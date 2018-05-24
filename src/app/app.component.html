@@ -6,7 +6,7 @@
 </div>
 <h1> The list of Users from MongoDb:</h1>
 <ul>
-<li *ngFor="let user of users; let i = index;" (click)="subUser(i)">{{user.name}}</li>
+<li *ngFor="let user of users;" (click)="subUser(user._id)">{{user.name}}</li>
 </ul>
 <div>
   <input [(ngModel)]="newUser" [value]=newUser >

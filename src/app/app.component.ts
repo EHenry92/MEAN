@@ -31,8 +31,15 @@ export class AppComponent {
       .subscribe(res => this.users = res);
 
   }
-  subUser(userIndex):void {
-    console.log("index", userIndex)
+  subUser(userId):void {
+    this._dataService.destroyUser(userId)
+    .subscribe(
+      data => { console.log(data); },
+      err => { console.log("An error occured positing user", err); }
+    )
+    this._dataService.getUsers()
+      .subscribe(res => this.users = res);
+
   }
 }
 
